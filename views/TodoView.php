@@ -7,11 +7,185 @@ $search = $_GET['search'] ?? '';
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Aplikasi Todolist Niel | Rapi & Modern</title>
+    <title>Aplikasi Todolist Niel | Modern & Mewah</title>
     <link href="/assets/vendor/bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/assets/vendor/bootstrap-icons-1.13.1/bootstrap-icons.min.css" rel="stylesheet" />
     
     <link href="/assets/css/style.css" rel="stylesheet" />
+    
+    <style>
+       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+body {
+    background: radial-gradient(circle at top left, #e0eafc, #cfdef3);
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    color: #1a1a1a;
+}
+
+/* --- Card utama: mewah dan elegan --- */
+.main-card {
+    border-radius: 1.5rem;
+    border: none;
+    background: #ffffffcc;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    max-width: 900px;
+    transition: all 0.3s ease-in-out;
+}
+.main-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Header Judul --- */
+.todo-header {
+    background: linear-gradient(90deg, #007bff, #00c3ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* --- Tombol Aksi Global --- */
+.btn {
+    border-radius: 0.8rem !important;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+}
+.btn-primary {
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    border: none;
+}
+.btn-primary:hover {
+    background: linear-gradient(90deg, #0069d9, #00408a);
+}
+.btn-outline-dark:hover {
+    background: #343a40;
+    color: #fff;
+}
+
+/* --- Input dan Search --- */
+.form-control, .form-select {
+    border-radius: 0.7rem;
+    border: 1px solid #ced4da;
+    transition: all 0.2s ease;
+}
+.form-control:focus, .form-select:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    border-color: #007bff;
+}
+
+/* --- Todo Item --- */
+.list-group-flush .todo-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    margin-bottom: 0.4rem;
+    border-radius: 1rem;
+    background: #ffffff;
+    border: none;
+    transition: all 0.25s ease;
+}
+.todo-item:hover {
+    transform: scale(1.01);
+    background: #f8faff;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+}
+.todo-item.is-finished {
+    background: linear-gradient(90deg, #e8fff2 0%, #f5fff8 100%);
+    opacity: 0.95;
+}
+
+/* --- Nomor Urut dan Drag Handle --- */
+.sortable-handle {
+    cursor: grab;
+    color: #adb5bd;
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+.text-muted.me-3 {
+    font-weight: 500;
+    color: #6c757d !important;
+}
+
+/* --- Badge Status --- */
+.badge {
+    border-radius: 0.8rem;
+    padding: 0.6em 0.9em;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.3px;
+}
+.badge.bg-success {
+    background: linear-gradient(90deg, #28a745, #20c997) !important;
+}
+.badge.bg-danger {
+    background: linear-gradient(90deg, #dc3545, #ff4b5c) !important;
+}
+
+/* --- Modal --- */
+.modal-content {
+    border-radius: 1.2rem;
+    border: none;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+.modal-header {
+    border-bottom: none;
+    border-radius: 1.2rem 1.2rem 0 0;
+}
+.modal-body {
+    background-color: #f8f9fb;
+    border-radius: 0 0 1.2rem 1.2rem;
+}
+.modal-footer {
+    background-color: #f8f9fb;
+    border-top: none;
+}
+
+/* --- Detail Todo --- */
+#detailTodo #detailTitle {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #0056b3;
+}
+#detailTodo #detailDescription {
+    background: #f1f3f5;
+    border-left: 5px solid #0d6efd;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    font-style: italic;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+}
+
+/* --- Animasi Halus --- */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.todo-item {
+    animation: fadeInUp 0.3s ease both;
+}
+
+/* --- Alert --- */
+.alert {
+    border-radius: 1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* --- Placeholder Kosong --- */
+.todo-item.text-center {
+    background: rgba(255,255,255,0.8);
+    border-radius: 1rem;
+    backdrop-filter: blur(5px);
+    font-style: italic;
+}
+    </style>
     
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
     </head>
@@ -25,11 +199,11 @@ $search = $_GET['search'] ?? '';
     </div>
     <?php endif; ?>
 
-    <div class="card main-card">
+    <div class="card main-card mx-auto">
         <div class="card-body p-4">
             
             <div class="d-flex justify-content-between align-items-center pb-3 border-bottom">
-                <h2 class="todo-header"><i class="bi bi-list-check me-2"></i> Daftar Aktivitas</h2>
+                <h2 class="todo-header"><i class="bi bi-list-check me-2"></i> Todo List Ku</h2> 
                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTodo">
                     <i class="bi bi-plus-lg me-1"></i> Tambah Todo
                 </button>
@@ -69,6 +243,8 @@ $search = $_GET['search'] ?? '';
                     <?php if (!empty($todos)): ?>
                         <?php foreach ($todos as $i => $todo): 
                             $is_finished = $todo['is_finished'] === 't' || $todo['is_finished'] == 1;
+                            // Menambahkan data updated_at ke tombol detail
+                            $updated_at = $todo['updated_at'] ?? $todo['created_at']; 
                         ?>
                         <div class="todo-item list-group-item list-group-item-action <?= $is_finished ? 'is-finished' : '' ?>" data-id="<?= $todo['id'] ?>">
                             
@@ -76,7 +252,7 @@ $search = $_GET['search'] ?? '';
                             <span class="text-muted me-3" style="width: 25px;"><?= $i + 1 ?>.</span>
                             
                             <span class="badge me-3 p-2 <?= $is_finished ? 'bg-success' : 'bg-danger' ?>">
-                                <?= $is_finished ? '<i class="bi bi-check"></i> Selesai' : '<i class="bi bi-clock"></i> Pending' ?>
+                                <?= $is_finished ? '<i class="bi bi-check"></i> Selesai' : '<i class="bi bi-clock"></i> Belum Selesai'?>
                             </span>
 
                             <div class="todo-item-title me-3" title="<?= htmlspecialchars($todo['title']) ?>">
@@ -89,7 +265,7 @@ $search = $_GET['search'] ?? '';
                             
                             <div class="todo-item-actions">
                                 <button class="btn btn-sm btn-outline-info" title="Detail"
-                                    onclick="showModalDetailTodo(<?= $todo['id'] ?>, '<?= htmlspecialchars(addslashes($todo['title'])) ?>', '<?= htmlspecialchars(addslashes($todo['description'] ?? '')) ?>', <?= (int)$is_finished ?>, '<?= date('d F Y H:i', strtotime($todo['created_at'])) ?>', '<?= date('d F Y H:i', strtotime($todo['updated_at'])) ?>')">
+                                    onclick="showModalDetailTodo(<?= $todo['id'] ?>, '<?= htmlspecialchars(addslashes($todo['title'])) ?>', '<?= htmlspecialchars(addslashes($todo['description'] ?? '')) ?>', <?= (int)$is_finished ?>, '<?= date('d F Y H:i', strtotime($todo['created_at'])) ?>', '<?= date('d F Y H:i', strtotime($updated_at)) ?>')">
                                     <i class="bi bi-eye"></i> 
                                 </button>
                                 <button class="btn btn-sm btn-outline-warning" title="Ubah"
@@ -279,12 +455,15 @@ $search = $_GET['search'] ?? '';
     function showModalDetailTodo(todoId, title, description, isFinished, createdAt, updatedAt) {
         document.getElementById("detailId").innerText = todoId;
         document.getElementById("detailTitle").innerText = title;
-        document.getElementById("detailDescription").innerHTML = description ? description.replace(/\n/g, '<br>') : "Tidak ada deskripsi."; // Tambahkan support line break
+        // Gunakan innerHTML untuk mendukung <br>
+        document.getElementById("detailDescription").innerHTML = description ? description.replace(/\n/g, '<br>') : "Tidak ada deskripsi."; 
         
         const statusBadge = document.getElementById("detailStatusBadge");
+        // Status badge tetap menggunakan gaya asli (bg-success/bg-danger)
         statusBadge.innerText = isFinished ? 'Selesai' : 'Belum Selesai';
         statusBadge.className = isFinished ? 'badge bg-success p-2' : 'badge bg-danger p-2';
 
+        // Menampilkan waktu yang sudah diformat
         document.getElementById("detailCreatedAt").innerText = createdAt;
         document.getElementById("detailUpdatedAt").innerText = updatedAt;
 
