@@ -8,6 +8,7 @@ $search = $_GET['search'] ?? '';
 <html>
 <head>
     <title>Aplikasi Todolist Niel | Modern & Mewah</title>
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
     <link href="/assets/vendor/bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/assets/vendor/bootstrap-icons-1.13.1/bootstrap-icons.min.css" rel="stylesheet" />
     
