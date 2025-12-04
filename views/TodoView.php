@@ -13,7 +13,7 @@ $search = $_GET['search'] ?? '';
     <link href="/assets/vendor/bootstrap-icons-1.13.1/bootstrap-icons.min.css" rel="stylesheet" />
     <link href="/assets/css/style.css" rel="stylesheet" />
 
-    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.png">
 
     <style>
        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
